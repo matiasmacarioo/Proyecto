@@ -22,9 +22,8 @@ namespace Proyecto.Controllers
         // GET: Tarea
         public async Task<IActionResult> Index()
         {
-              return _context.Tarea != null ? 
-                          View(await _context.Tarea.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.Tarea'  is null.");
+            var applicationDbContext = _context.Tarea.Include(t => t.Usuario);
+            return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: Tarea/Details/5
@@ -36,6 +35,7 @@ namespace Proyecto.Controllers
             }
 
             var tarea = await _context.Tarea
+                .Include(t => t.Usuario)
                 .FirstOrDefaultAsync(m => m.TareaID == id);
             if (tarea == null)
             {
@@ -48,6 +48,7 @@ namespace Proyecto.Controllers
         // GET: Tarea/Create
         public IActionResult Create()
         {
+            ViewData["UsuarioID"] = new SelectList(_context.Users, "Id", "Email");
             return View();
         }
 
@@ -56,7 +57,7 @@ namespace Proyecto.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TareaID,Descripcion,Fecha,Realizada,Usuario")] Tarea tarea)
+        public async Task<IActionResult> Create([Bind("TareaID,Descripcion,Fecha,Realizada,UsuarioID")] Tarea tarea)
         {
             if (ModelState.IsValid)
             {
@@ -64,6 +65,7 @@ namespace Proyecto.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["UsuarioID"] = new SelectList(_context.Users, "Id", "Id", tarea.UsuarioID);
             return View(tarea);
         }
 
@@ -80,6 +82,7 @@ namespace Proyecto.Controllers
             {
                 return NotFound();
             }
+            ViewData["UsuarioID"] = new SelectList(_context.Users, "Id", "Id", tarea.UsuarioID);
             return View(tarea);
         }
 
@@ -88,7 +91,7 @@ namespace Proyecto.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("TareaID,Descripcion,Fecha,Realizada,Usuario")] Tarea tarea)
+        public async Task<IActionResult> Edit(int id, [Bind("TareaID,Descripcion,Fecha,Realizada,UsuarioID")] Tarea tarea)
         {
             if (id != tarea.TareaID)
             {
@@ -115,6 +118,7 @@ namespace Proyecto.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["UsuarioID"] = new SelectList(_context.Users, "Id", "Id", tarea.UsuarioID);
             return View(tarea);
         }
 
@@ -127,6 +131,7 @@ namespace Proyecto.Controllers
             }
 
             var tarea = await _context.Tarea
+                .Include(t => t.Usuario)
                 .FirstOrDefaultAsync(m => m.TareaID == id);
             if (tarea == null)
             {

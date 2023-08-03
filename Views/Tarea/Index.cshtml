@@ -5,34 +5,10 @@
 }
 
 <h1>Index</h1>
-<!-- Botón para abrir el modal -->
-<a type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-  Abrir Modal
-</a>
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="myModalLabel">Título del Modal</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Contenido del modal...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Guardar cambios</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
 <table class="table">
     <thead>
         <tr>
@@ -64,7 +40,7 @@
                 @Html.DisplayFor(modelItem => item.Realizada)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Usuario)
+                @Html.DisplayFor(modelItem => item.Usuario.Email)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.TareaID">Edit</a> |
@@ -75,4 +51,3 @@
 }
     </tbody>
 </table>
-

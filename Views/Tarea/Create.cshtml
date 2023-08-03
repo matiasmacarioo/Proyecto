@@ -22,15 +22,9 @@
                 <input asp-for="Fecha" class="form-control" />
                 <span asp-validation-for="Fecha" class="text-danger"></span>
             </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Realizada" /> @Html.DisplayNameFor(model => model.Realizada)
-                </label>
-            </div>
             <div class="form-group">
-                <label asp-for="Usuario" class="control-label"></label>
-                <input asp-for="Usuario" class="form-control" />
-                <span asp-validation-for="Usuario" class="text-danger"></span>
+                <label asp-for="UsuarioID" class="control-label">Usuario</label>
+                <select asp-for="UsuarioID" class ="form-control" asp-items="ViewBag.UsuarioID"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
