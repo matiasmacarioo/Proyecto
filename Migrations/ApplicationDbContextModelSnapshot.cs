@@ -224,31 +224,47 @@ namespace Proyecto.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Proyecto.Models.Tarea", b =>
+            modelBuilder.Entity("Proyecto.Models.Alumno", b =>
                 {
-                    b.Property<int>("TareaID")
+                    b.Property<int>("AlumnoID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TareaID"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AlumnoID"), 1L, 1);
 
-                    b.Property<string>("Descripcion")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("CarreraID")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime>("Fecha")
+                    b.Property<DateTime>("FechaNacimiento")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("Realizada")
-                        .HasColumnType("bit");
+                    b.Property<string>("Nombre")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UsuarioID")
-                        .HasColumnType("nvarchar(450)");
+                    b.HasKey("AlumnoID");
 
-                    b.HasKey("TareaID");
+                    b.HasIndex("CarreraID");
 
-                    b.HasIndex("UsuarioID");
+                    b.ToTable("Alumnos");
+                });
 
-                    b.ToTable("Tarea");
+            modelBuilder.Entity("Proyecto.Models.Carrera", b =>
+                {
+                    b.Property<int>("CarreraID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CarreraID"), 1L, 1);
+
+                    b.Property<int>("Duracion")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Nombre")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CarreraID");
+
+                    b.ToTable("Carreras");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -302,13 +318,15 @@ namespace Proyecto.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Proyecto.Models.Tarea", b =>
+            modelBuilder.Entity("Proyecto.Models.Alumno", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "Usuario")
+                    b.HasOne("Proyecto.Models.Carrera", "Carrera")
                         .WithMany()
-                        .HasForeignKey("UsuarioID");
+                        .HasForeignKey("CarreraID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("Usuario");
+                    b.Navigation("Carrera");
                 });
 #pragma warning restore 612, 618
         }

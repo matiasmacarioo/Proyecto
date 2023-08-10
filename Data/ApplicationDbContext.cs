@@ -10,5 +10,6 @@ public class ApplicationDbContext : IdentityDbContext
         : base(options)
     {
     }
-    public DbSet<Proyecto.Models.Tarea>? Tarea { get; set; }
+    public DbSet<Proyecto.Models.Carrera>? Carreras { get; set; }
+    public DbSet<Proyecto.Models.Alumno>? Alumnos { get; set; }
 }
