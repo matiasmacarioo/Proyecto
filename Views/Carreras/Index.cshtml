@@ -2,7 +2,6 @@
 
 <h2>Listado de Carreras</h2>
 
-<!-- Button trigger modal -->
 <button  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal">
     Crear
 </button>
@@ -19,18 +18,17 @@
                 <div class="row">
                     <form asp-action="Create" id="formulario" asp-controller="Carreras" method="post">
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-11">
                                 <div class="form-group">
                                     <label for="nombre">Nombre:</label>
-                                    <input type="text" id="nombre" name="nombre" placeholder="Carrera"
-                                        class="form-control" required>
+                                    <input type="text" id="nombre" name="nombre" placeholder="Carrera" class="form-control" required>
                                 </div>
                             </div>
-                            <div class="col-6">
+                            <br>
+                            <div class="col-3">
                                 <div class="form-group">
                                     <label for="duracion">Duración:</label>
-                                    <input type="text" id="duracion" name="duracion" placeholder="En años"
-                                        class="form-control" required>
+                                    <input type="text" id="duracion" name="duracion" placeholder="En años" class="form-control" oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
                                 </div>
                             </div>
                         </div>
@@ -59,7 +57,7 @@
                 <td>@carrera.Nombre</td>
                 <td>@carrera.Duracion Años</td>
                 <td>
-                    <button onclick="pasarID(@carrera.CarreraID)" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal">
+                    <button onclick="pasarDatos(@carrera.CarreraID, '@carrera.Nombre', @carrera.Duracion)"  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal">
                         Editar
                     </button>
                     <form asp-action="Delete" asp-controller="Carreras" asp-route-id="@carrera.CarreraID" class="d-inline">
@@ -72,8 +70,10 @@
 </table>
 
 <script>
-    function pasarID(id) {
+    function pasarDatos(id, nombre, duracion) {
         var form = document.getElementById('formulario');
         form.action = '/Carreras/Edit/' + id;
+        document.getElementById('nombre').value = nombre;
+        document.getElementById('duracion').value = duracion;
     }
 </script>
