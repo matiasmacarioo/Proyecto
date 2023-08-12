@@ -52,7 +52,7 @@
             <tr>
                 <th>Nombre</th>
                 <th>Duración</th>
-                <th>Acciones</th>
+                <th class="text-center">Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -61,7 +61,7 @@
                 <tr>
                     <td>@carrera.Nombre</td>
                     <td>@carrera.Duracion Años</td>
-                    <td>
+                    <td class="text-center">
                         <button onclick="pasarDatos(@carrera.CarreraID, '@carrera.Nombre', @carrera.Duracion)"  type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#Modal">
                             Editar
                         </button>

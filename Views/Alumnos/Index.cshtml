@@ -65,7 +65,7 @@
                 <th>Nombre</th>
                 <th>Fecha de Nacimiento</th>
                 <th>Carrera</th>
-                <th>Acciones</th>
+                <th class="text-center">Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -75,7 +75,7 @@
                     <td>@alumno.Nombre</td>
                     <td>@alumno.FechaNacimiento.ToString("yyyy-MM-dd")</td>
                     <td>@alumno.Carrera.Nombre</td>
-                    <td>
+                    <td class="text-center">
                         <button onclick="pasarDatos(@alumno.AlumnoID, '@alumno.Nombre', @alumno.CarreraID, '@alumno.FechaNacimiento')" type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#Modal">
                             Editar
                         </button>

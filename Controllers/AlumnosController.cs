@@ -19,8 +19,8 @@ namespace TuProyecto.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var alumnos = _context.Alumnos.Include(a => a.Carrera).OrderBy(a => a.Carrera.Nombre).ThenBy(a => a.Nombre).ToList();
-            var carreras = _context.Carreras.ToList();
+            var alumnos = _context.Alumnos?.Include(a => a.Carrera).OrderBy(a => a.Carrera.Nombre).ThenBy(a => a.Nombre).ToList();
+            var carreras = _context.Carreras?.ToList();
             ViewBag.CarrerasList = new SelectList(carreras, "CarreraID", "Nombre");
             return View(alumnos);
         }
