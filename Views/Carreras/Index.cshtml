@@ -1,10 +1,14 @@
 @model List<Carrera>
 
-<h2>Listado de Carreras</h2>
+<div class="col-6 mx-auto">
+    <h1>Carreras</h1><hr><br>
+</div>
 
-<button  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal">
-    Crear
-</button>
+<div class="container col-10">
+    <button  type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#Modal">
+        Crear
+    </button>
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -42,32 +46,34 @@
 </div>
 
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Nombre</th>
-            <th>Duración</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var carrera in Model)
-        {
+<div class="container col-10">
+    <table class="table">
+        <thead>
             <tr>
-                <td>@carrera.Nombre</td>
-                <td>@carrera.Duracion Años</td>
-                <td>
-                    <button onclick="pasarDatos(@carrera.CarreraID, '@carrera.Nombre', @carrera.Duracion)"  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal">
-                        Editar
-                    </button>
-                    <form asp-action="Delete" asp-controller="Carreras" asp-route-id="@carrera.CarreraID" class="d-inline">
-                        <button class="btn btn-dark" type="submit">Eliminar</button>
-                    </form>
-                </td>
+                <th>Nombre</th>
+                <th>Duración</th>
+                <th>Acciones</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var carrera in Model)
+            {
+                <tr>
+                    <td>@carrera.Nombre</td>
+                    <td>@carrera.Duracion Años</td>
+                    <td>
+                        <button onclick="pasarDatos(@carrera.CarreraID, '@carrera.Nombre', @carrera.Duracion)"  type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#Modal">
+                            Editar
+                        </button>
+                        <form asp-action="Delete" asp-controller="Carreras" asp-route-id="@carrera.CarreraID" class="d-inline">
+                            <button class="btn btn-dark" type="submit">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 
 <script>
     function pasarDatos(id, nombre, duracion) {

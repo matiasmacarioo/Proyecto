@@ -1,10 +1,14 @@
 @model List<Alumno>
 
-<h2>Listado de Alumnos</h2>
+<div class="col-6 mx-auto">
+    <h1>Alumnos</h1><hr><br>
+</div>
 
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal">
-    Crear
-</button>
+<div class="container col-10">
+    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#Modal">
+        Crear
+    </button>
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -54,34 +58,36 @@
     </div>
 </div>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Nombre</th>
-            <th>Fecha de Nacimiento</th>
-            <th>Carrera</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var alumno in Model)
-        {
+<div class="container col-10">
+    <table class="table">
+        <thead>
             <tr>
-                <td>@alumno.Nombre</td>
-                <td>@alumno.FechaNacimiento.ToString("yyyy-MM-dd")</td>
-                <td>@alumno.Carrera.Nombre</td>
-                <td>
-                    <button onclick="pasarDatos(@alumno.AlumnoID, '@alumno.Nombre', @alumno.CarreraID, '@alumno.FechaNacimiento')" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal">
-                        Editar
-                    </button>
-                    <form asp-action="Delete" asp-controller="Alumnos" asp-route-id="@alumno.AlumnoID" class="d-inline">
-                        <button class="btn btn-dark" type="submit">Eliminar</button>
-                    </form>
-                </td>
+                <th>Nombre</th>
+                <th>Fecha de Nacimiento</th>
+                <th>Carrera</th>
+                <th>Acciones</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var alumno in Model)
+            {
+                <tr>
+                    <td>@alumno.Nombre</td>
+                    <td>@alumno.FechaNacimiento.ToString("yyyy-MM-dd")</td>
+                    <td>@alumno.Carrera.Nombre</td>
+                    <td>
+                        <button onclick="pasarDatos(@alumno.AlumnoID, '@alumno.Nombre', @alumno.CarreraID, '@alumno.FechaNacimiento')" type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#Modal">
+                            Editar
+                        </button>
+                        <form asp-action="Delete" asp-controller="Alumnos" asp-route-id="@alumno.AlumnoID" class="d-inline">
+                            <button class="btn btn-dark" type="submit">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 
 <script>
     function pasarDatos(id, nombre, carrera, fecha) {
