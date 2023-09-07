@@ -19,7 +19,7 @@ namespace Proyecto.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var profesores = _context.Profesores?.Include(a => a.Carrera).OrderBy(a => a.Carrera.Nombre).ThenBy(a => a.Nombre).ToList();
+            var profesores = _context.Profesores?.Include(a => a.Carrera).OrderBy(a => a.Nombre).ToList();
             var carreras = _context.Carreras?.ToList();
             ViewBag.CarrerasList = new SelectList(carreras, "CarreraID", "Nombre");
             return View(profesores);
@@ -43,6 +43,7 @@ namespace Proyecto.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(int id, string nombre, DateTime fechaNacimiento, int carreraID, string direccion, int documento)
         {
+
             var profesor = await _context.Profesores.FindAsync(id);
             if (profesor != null)
             {
@@ -50,7 +51,10 @@ namespace Proyecto.Controllers
                 profesor.FechaNacimiento = fechaNacimiento;
                 profesor.CarreraID = carreraID;
                 profesor.Direccion = direccion;
-                profesor.Documento = documento;
+                var profesorExiste = await _context.Profesores.AnyAsync(a => a.Documento == documento);
+                if (!profesorExiste){
+                    profesor.Documento = documento;
+                }
                 await _context.SaveChangesAsync();
             }
             return RedirectToAction(nameof(Index));
