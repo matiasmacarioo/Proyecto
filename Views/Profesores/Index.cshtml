@@ -91,13 +91,13 @@
             {
                 <tr>
                     <td>@profesor.Nombre</td>
-                    <td>@profesor.FechaNacimiento.ToString("yyyy-MM-dd")</td>
+                    <td>@profesor.FechaNacimiento.ToString("dd-MM-yyyy")</td>
                     <td>@profesor.Carrera.Nombre</td>
                     <td>@profesor.Documento</td>
                     <td>@profesor.Direccion</td>
                     <td class="text-center">
                         <button
-                            onclick="pasarDatos(@profesor.ProfesorID, '@profesor.Nombre', @profesor.CarreraID, '@profesor.FechaNacimiento', '@profesor.Documento', '@profesor.Direccion')"
+                            onclick="pasarDatos(@profesor.ProfesorID, '@profesor.Nombre', @profesor.CarreraID, '@profesor.FechaString', '@profesor.Documento', '@profesor.Direccion')"
                             type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#Modal">
                             Editar
                         </button>

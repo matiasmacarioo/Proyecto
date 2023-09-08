@@ -14,6 +14,9 @@ namespace Proyecto.Models
         public string? Direccion { get; set; }
         public DateTime FechaNacimiento { get; set; }
 
+        [NotMapped]
+        public string FechaString { get => FechaNacimiento.ToString("yyyy-MM-dd");}
+    
         [ForeignKey("Carrera")]
         public int CarreraID { get; set; }
         public Carrera? Carrera { get; set; }
