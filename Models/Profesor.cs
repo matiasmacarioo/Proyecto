@@ -19,6 +19,7 @@ namespace Proyecto.Models
     
         [ForeignKey("Carrera")]
         public int CarreraID { get; set; }
+
         public Carrera? Carrera { get; set; }
     }
 }

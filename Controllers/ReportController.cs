@@ -24,25 +24,29 @@ namespace Proyecto.Controllers
         public ActionResult Get(string reportName)
         {
 
+            //List<Profesor> profesoresList = _context.Profesores?.ToList();
             List<Profesor> profesoresList = _context.Profesores?.ToList();
-            //List<Profesor> profesoresList = _context.Profesores?.Include(a => a.Carrera).ToList();
+            List<Carrera> carrerasList = _context.Carreras?.ToList();
 
             ViewBag.ProfesoresList = profesoresList;
+            ViewBag.CarrerasList = carrerasList;
 
-            var returnString = GenerateReportAsync(reportName, profesoresList);
+            var returnString = GenerateReportAsync(reportName, profesoresList, carrerasList);
 
             return File(returnString, System.Net.Mime.MediaTypeNames.Application.Octet, reportName + ".pdf");
         }
 
-        public byte[] GenerateReportAsync(string reportName, List<Profesor> profesoresList)
+        public byte[] GenerateReportAsync(string reportName, List<Profesor> profesoresList, List<Carrera> carrerasList)
         {
             string fileDirPath = Assembly.GetExecutingAssembly().Location.Replace("ReportAPI.dll", string.Empty);
             string rdlcFilePath = string.Format("{0}ReportFiles\\{1}.rdlc", fileDirPath, reportName);
             Dictionary<string, string> parameters = new Dictionary<string, string>();
+
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             Encoding.GetEncoding("windows-1252");
             LocalReport report = new LocalReport(rdlcFilePath);
             report.AddDataSource("DataSetProfesor", profesoresList);
+            report.AddDataSource("DataSetCarreras", carrerasList);
 
             //var result = report.Execute(GetRenderType("pdf"), 0, parameters);
             //var result = report.Execute(RenderType.Pdf, 1);
