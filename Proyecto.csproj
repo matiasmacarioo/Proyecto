@@ -49,4 +49,8 @@
     </Compile>
   </ItemGroup>
 
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="XCopy &quot;Reports&quot; &quot;bin\Debug\net6.0\Proyecto.dllReportFiles\&quot; /E /Y " />
+  </Target>
+
 </Project>

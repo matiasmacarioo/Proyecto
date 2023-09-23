@@ -94,7 +94,7 @@
                   <TextRun>
                     <Value>Listado de Profesores</Value>
                     <Style>
-                      <FontFamily>Segoe UI Light</FontFamily>
+                      <FontFamily>Lucida Sans Unicode</FontFamily>
                       <FontSize>24pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
@@ -105,7 +105,7 @@
             </Paragraphs>
             <rd:DefaultName>textbox1</rd:DefaultName>
             <Height>0.43in</Height>
-            <Width>3.44791in</Width>
+            <Width>6.01041in</Width>
             <Style>
               <BackgroundColor>LightGrey</BackgroundColor>
               <PaddingLeft>2pt</PaddingLeft>
@@ -118,7 +118,7 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1in</Width>
+                  <Width>1.375in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1in</Width>
@@ -130,7 +130,7 @@
                   <Width>1in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.95834in</Width>
+                  <Width>1.5625in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -146,7 +146,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Nombre</Value>
+                                  <Value>Nombre Profesor</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -274,7 +274,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Carrera</Value>
+                                  <Value>Nombre Carrera</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                   </Style>
@@ -484,9 +484,9 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSetProfesor</DataSetName>
-            <Top>0.74944in</Top>
+            <Top>0.49944in</Top>
             <Height>0.5in</Height>
-            <Width>5.03125in</Width>
+            <Width>6.01041in</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -495,10 +495,10 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>2.28in</Height>
+        <Height>0.99944in</Height>
         <Style />
       </Body>
-      <Width>7.15624in</Width>
+      <Width>6.01041in</Width>
       <Page>
         <LeftMargin>1in</LeftMargin>
         <RightMargin>1in</RightMargin>
