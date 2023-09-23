@@ -56,5 +56,4 @@ dkms.conf
 /bin/
 /obj/
 /.vscode
-/.vs/Proyecto/FileContentIndex
-/.vs/Proyecto/v17/.suo
+/.vs
