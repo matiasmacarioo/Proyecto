@@ -94,20 +94,21 @@
                   <TextRun>
                     <Value>Listado de Profesores</Value>
                     <Style>
-                      <FontFamily>Lucida Sans Unicode</FontFamily>
+                      <FontFamily>Times New Roman</FontFamily>
                       <FontSize>24pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>textbox1</rd:DefaultName>
             <Height>0.43in</Height>
-            <Width>6.01041in</Width>
+            <Width>6.32291in</Width>
             <Style>
-              <BackgroundColor>LightGrey</BackgroundColor>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
@@ -118,10 +119,10 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.375in</Width>
+                  <Width>1.20833in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1in</Width>
+                  <Width>0.82292in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.07291in</Width>
@@ -130,7 +131,7 @@
                   <Width>1in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.5625in</Width>
+                  <Width>2.21875in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -181,7 +182,9 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox7</rd:DefaultName>
@@ -241,13 +244,15 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Fecha Nacimiento</Value>
+                                  <Value>Nacimiento</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox11</rd:DefaultName>
@@ -274,13 +279,15 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Nombre Carrera</Value>
+                                  <Value>Nombre de la Carrera</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox2</rd:DefaultName>
@@ -346,7 +353,9 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Documento</rd:DefaultName>
@@ -411,7 +420,9 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>FechaNacimiento</rd:DefaultName>
@@ -443,7 +454,9 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>CarreraID1</rd:DefaultName>
@@ -483,10 +496,11 @@
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
+            <KeepTogether>true</KeepTogether>
             <DataSetName>DataSetProfesor</DataSetName>
             <Top>0.49944in</Top>
             <Height>0.5in</Height>
-            <Width>6.01041in</Width>
+            <Width>6.32291in</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -498,7 +512,7 @@
         <Height>0.99944in</Height>
         <Style />
       </Body>
-      <Width>6.01041in</Width>
+      <Width>6.32291in</Width>
       <Page>
         <LeftMargin>1in</LeftMargin>
         <RightMargin>1in</RightMargin>

@@ -1,11 +1,9 @@
 ﻿using AspNetCore.Reporting;
 using Microsoft.AspNetCore.Mvc;
+using Proyecto.Data;
 using Proyecto.Models;
-using static Proyecto.Controllers.ReportController;
 using System.Reflection;
 using System.Text;
-using Proyecto.Data;
-using Microsoft.EntityFrameworkCore;
 
 namespace Proyecto.Controllers
 {
@@ -19,17 +17,16 @@ namespace Proyecto.Controllers
             _context = context;
         }
 
-        [HttpGet("{reportName}")]
-        // Inside your ReportController
-        public ActionResult Get(string reportName)
+        [HttpPost("GenerateReport/{reportName}")]
+        public ActionResult GenerateReport(string reportName)
         {
 
             //List<Profesor> profesoresList = _context.Profesores?.ToList();
             List<Profesor> profesoresList = _context.Profesores?.ToList();
             List<Carrera> carrerasList = _context.Carreras?.ToList();
 
-            ViewBag.ProfesoresList = profesoresList;
-            ViewBag.CarrerasList = carrerasList;
+            //ViewBag.ProfesoresList = profesoresList;
+            //ViewBag.CarrerasList = carrerasList;
 
             var returnString = GenerateReportAsync(reportName, profesoresList, carrerasList);
 

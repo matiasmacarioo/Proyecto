@@ -5,12 +5,18 @@
     <hr><br>
 </div>
 
-<div class="container col-10">
-    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#Modal">
-        Crear
-    </button>
-    <a href="/Report/Get?reportName=Profesores" class="btn btn-primary">Generar PDF</a>
+<div class="container">
+    <div class="d-flex align-items-center justify-content-center">
+        <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#Modal">
+            Crear
+        </button>
+        @using (Html.BeginForm("GenerateReport", "Report", new { reportName = "Profesores" }, FormMethod.Post))
+        {
+            <button type="submit" class="btn btn-dark m-1">Generar PDF</button>
+        }
+    </div>
 </div>
+
 
 <!-- Modal -->
 <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
