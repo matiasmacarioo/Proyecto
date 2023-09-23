@@ -4,10 +4,16 @@
     <h1>Alumnos</h1><hr><br>
 </div>
 
-<div class="container col-10">
-    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#Modal">
-        Crear
-    </button>
+<div class="container">
+    <div class="d-flex align-items-center justify-content-center">
+        <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#Modal">
+            Crear
+        </button>
+        @using (Html.BeginForm("GenerateReport", "Report", new { reportName = "Alumnos" }, FormMethod.Post))
+        {
+            <button type="submit" class="btn btn-dark m-1">Generar PDF</button>
+        }
+    </div>
 </div>
 
 <!-- Modal -->

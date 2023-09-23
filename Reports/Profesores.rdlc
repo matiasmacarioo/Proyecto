@@ -416,7 +416,7 @@
                                   <Value>=Fields!FechaNacimiento.Value</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
-                                    <Format>d</Format>
+                                    <Format>M/d/yyyy</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>

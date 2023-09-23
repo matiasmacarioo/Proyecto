@@ -21,19 +21,16 @@ namespace Proyecto.Controllers
         public ActionResult GenerateReport(string reportName)
         {
 
-            //List<Profesor> profesoresList = _context.Profesores?.ToList();
+            List<Alumno> alumnosList = _context.Alumnos?.ToList();
             List<Profesor> profesoresList = _context.Profesores?.ToList();
             List<Carrera> carrerasList = _context.Carreras?.ToList();
 
-            //ViewBag.ProfesoresList = profesoresList;
-            //ViewBag.CarrerasList = carrerasList;
-
-            var returnString = GenerateReportAsync(reportName, profesoresList, carrerasList);
+            var returnString = GenerateReportAsync(reportName, profesoresList, carrerasList, alumnosList);
 
             return File(returnString, System.Net.Mime.MediaTypeNames.Application.Octet, reportName + ".pdf");
         }
 
-        public byte[] GenerateReportAsync(string reportName, List<Profesor> profesoresList, List<Carrera> carrerasList)
+        public byte[] GenerateReportAsync(string reportName, List<Profesor> profesoresList, List<Carrera> carrerasList, List<Alumno> alumnosList)
         {
             string fileDirPath = Assembly.GetExecutingAssembly().Location.Replace("ReportAPI.dll", string.Empty);
             string rdlcFilePath = string.Format("{0}ReportFiles\\{1}.rdlc", fileDirPath, reportName);
@@ -44,6 +41,7 @@ namespace Proyecto.Controllers
             LocalReport report = new LocalReport(rdlcFilePath);
             report.AddDataSource("DataSetProfesor", profesoresList);
             report.AddDataSource("DataSetCarreras", carrerasList);
+            report.AddDataSource("DataSetAlumnos", alumnosList);
 
             //var result = report.Execute(GetRenderType("pdf"), 0, parameters);
             //var result = report.Execute(RenderType.Pdf, 1);
