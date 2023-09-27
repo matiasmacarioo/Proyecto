@@ -1,5 +1,6 @@
 ﻿using AspNetCore.Reporting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Proyecto.Data;
 using Proyecto.Models;
 using System.Reflection;
@@ -21,9 +22,9 @@ namespace Proyecto.Controllers
         public ActionResult GenerateReport(string reportName)
         {
 
-            List<Alumno> alumnosList = _context.Alumnos?.ToList();
-            List<Profesor> profesoresList = _context.Profesores?.ToList();
-            List<Carrera> carrerasList = _context.Carreras?.ToList();
+            List<Alumno> alumnosList = _context.Alumnos?.Include(a => a.Carrera).OrderBy(a => a.Carrera.Nombre).ThenBy(a => a.Nombre).ToList();
+            List<Profesor> profesoresList = _context.Profesores?.Include(a => a.Carrera).OrderBy(a => a.Nombre).ToList();
+            List<Carrera> carrerasList = _context.Carreras.OrderBy(c => c.Nombre).ThenBy(c => c.Duracion).ToList();
 
             var returnString = GenerateReportAsync(reportName, profesoresList, carrerasList, alumnosList);
 

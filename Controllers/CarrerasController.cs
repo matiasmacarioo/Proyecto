@@ -18,7 +18,7 @@ namespace TuProyecto.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var carreras = await _context.Carreras.OrderBy(c => c.Nombre).ToListAsync();
+            var carreras = await _context.Carreras.OrderBy(c => c.Nombre).ThenBy(c => c.Duracion).ToListAsync();
             return View(carreras);
         }
 
